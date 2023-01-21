@@ -120,6 +120,15 @@ int main(){
         if (fptr == NULL){
             printf("Error!\n");
         } else {
+            fprintf(fptr, "Cards: ");
+            for (int i = 0; i < 4; i++){
+                if (cards[i] == 10){
+                    fprintf(fptr, "10 ");
+                } else{
+                    fprintf(fptr, "%c ", cardlist[cards[i] - 1]);
+                }
+            }
+            fprintf(fptr, "\nThere are %d solution(s)\n", count);
             if (!isEmpty(q)){
                 Address p = ADDR_HEAD(q);
                 while (NEXT(p) != NULL){
