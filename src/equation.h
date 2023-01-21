@@ -19,4 +19,6 @@ void setEquation(Equation * Eq, int T, int * set, char a, char b, char c);
 
 void displayEquation(Equation Eq);
 
+void writeEqToFile(FILE * f, Equation Eq);
+
 #endif

@@ -104,21 +104,35 @@ int main(){
     printf("There are %d solution(s)\n", count);
     DisplayQueue(q);
 
-    // int choice2;
-    // boolean valid2 = false;
-    // while (!valid2){
-    //     printf("Would you like to safe to file?\n  1. Yes\n  2. No\n\nInput choice number: ");
-    //     scanf("%d", &choice2);
-    //     if (choice2 == 1 || choice2 == 2){
-    //         valid2 = true;
-    //     }
-    // }
-    // switch (choice2) {
-    // case 1:
-    //     /* code */
-    //     break;
+    int choice2;
+    boolean valid2 = false;
+    while (!valid2){
+        printf("Would you like to safe to file?\n  1. Yes\n  2. No\n\nInput choice number: ");
+        scanf("%d", &choice2);
+        if (choice2 == 1 || choice2 == 2){
+            valid2 = true;
+        }
+    }
+    switch (choice2) {
+    case 1:
+        FILE *fptr;
+        fptr = fopen("../test/result.txt", "w");
+        if (fptr == NULL){
+            printf("Error!\n");
+        } else {
+            if (!isEmpty(q)){
+                Address p = ADDR_HEAD(q);
+                while (NEXT(p) != NULL){
+                    writeEqToFile(fptr, p->Eq);
+                    p = NEXT(p);
+                }
+                writeEqToFile(fptr, p->Eq);
+            }
+        }
+        fclose(fptr);
+        break;
     
-    // default:
-    //     break;
-    // }
+    default:
+        break;
+    }
 }

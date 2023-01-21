@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include <stdio.h>
 #include "equation.h"
 
 void setEquation(Equation * Eq, int T, int * set, char a, char b, char c){
@@ -29,6 +29,33 @@ void displayEquation(Equation Eq){
 
     case 5:
         printf("%d %c (%d %c (%d %c %d)) = 24\n", Eq.cards[0], Eq.c1, Eq.cards[1], Eq.c2, Eq.cards[2], Eq.c3, Eq.cards[3]);
+        break;
+
+    default:
+        break;
+    }
+}
+
+void writeEqToFile(FILE * f, Equation Eq){
+    switch (Eq.type) {
+    case 1:
+        fprintf(f,"(%d %c %d) %c (%d %c %d) = 24\n", Eq.cards[0], Eq.c1, Eq.cards[1], Eq.c2, Eq.cards[2], Eq.c3, Eq.cards[3]);
+        break;
+    
+    case 2:
+        fprintf(f,"((%d %c %d) %c %d) %c %d = 24\n", Eq.cards[0], Eq.c1, Eq.cards[1], Eq.c2, Eq.cards[2], Eq.c3, Eq.cards[3]);
+        break;
+
+    case 3:
+        fprintf(f,"(%d %c (%d %c %d)) %c %d = 24\n", Eq.cards[0], Eq.c1, Eq.cards[1], Eq.c2, Eq.cards[2], Eq.c3, Eq.cards[3]);
+        break;
+
+    case 4:
+        fprintf(f,"%d %c ((%d %c %d) %c %d) = 24\n", Eq.cards[0], Eq.c1, Eq.cards[1], Eq.c2, Eq.cards[2], Eq.c3, Eq.cards[3]);
+        break;
+
+    case 5:
+        fprintf(f,"%d %c (%d %c (%d %c %d)) = 24\n", Eq.cards[0], Eq.c1, Eq.cards[1], Eq.c2, Eq.cards[2], Eq.c3, Eq.cards[3]);
         break;
 
     default:
