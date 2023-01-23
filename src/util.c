@@ -1,3 +1,5 @@
+/* File: util.c */
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -16,4 +18,10 @@ int * random(){
     }
     printf("\n");
     return card;
+}
+
+void swap(int * a, int * b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }

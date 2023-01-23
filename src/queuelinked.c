@@ -1,8 +1,4 @@
 /* File: queuelinked.c */
-/* NIM : 13521111 */
-/* Nama: Tabitha Permalla */
-/* Tanggal: 7 November 2022 */
-/* Topik Praktikum: Queue dan Stack dengan list berkait */
 
 #include <stdio.h>
 #include "queuelinked.h"

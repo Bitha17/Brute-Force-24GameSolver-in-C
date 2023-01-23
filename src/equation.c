@@ -1,3 +1,5 @@
+/* File: equation.c */
+
 #include <stdio.h>
 #include "equation.h"
 

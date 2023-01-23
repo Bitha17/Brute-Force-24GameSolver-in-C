@@ -1,3 +1,5 @@
+/* File : main.c */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -5,9 +7,8 @@
 #include "boolean.h" 
 #include "queuelinked.c"
 #include "equation.c"
-#include "random.c"
+#include "util.c"
 #include "evaluator.c"
-#include "swap.c"
 
 int permutations[24][4];
 int pcount = 0;
@@ -38,6 +39,7 @@ void permute(int * card, int l){
 
 int main(){
     srand(time(0));
+    clock_t start, end;
     boolean valid = false;
     int choice;
     Queue q;
@@ -54,6 +56,7 @@ int main(){
     case 1:
         char temp[2];
         int i = 0;
+        boolean invalid = false;
         while (i < 4){
             scanf("%s", &temp);
             boolean found = false;
@@ -70,12 +73,17 @@ int main(){
                     break;
                 }
             }
+            i++;
             if (!found){
-                printf("Card Invalid! Please re-enter 4 cards!\n");
-                i = 0;
-            } else{
-                i++;
-            }
+                invalid = true;
+            } 
+            if (i == 4){
+                if (invalid){
+                    printf("Card Invalid Found! Please re-enter 4 cards!\n");
+                    i = 0;
+                    invalid = false;
+                }
+            }     
         }        
         break;
     case 2:
@@ -87,6 +95,7 @@ int main(){
 
     char ops[] = {'+', '-', '*', '/'};
 
+    start = clock();
     int count = 0;
     int m = 0;
     permute(cards, 0);
@@ -100,10 +109,16 @@ int main(){
         }
         m++;
     }
+    end = clock();
 
     printf("There are %d solution(s)\n", count);
     DisplayQueue(q);
 
+    // Execution time
+    double exec_time = (double)(end - start) / CLOCKS_PER_SEC;
+    printf("Execution time: %f seconds\n", exec_time);
+
+    // Save to file
     int choice2;
     boolean valid2 = false;
     while (!valid2){
@@ -113,10 +128,25 @@ int main(){
             valid2 = true;
         }
     }
+
     switch (choice2) {
     case 1:
+        boolean fvalid = false;
+        char file[50];
+        while (!fvalid){
+            printf("Name of file with extension (.txt): ");
+            scanf("%s", &file);
+            int l = strlen(file);
+            if (l > 4 && file[l - 4] == '.' && file[l - 3] == 't' && file[l - 2] == 'x' && file[l - 1] == 't'){
+                fvalid = true;
+            }
+        }
+        char path[100] = "../test/";
+        for (int i = 0; i < strlen(file); i++){
+            path[8+i] = file[i];
+        }
         FILE *fptr;
-        fptr = fopen("../test/result.txt", "w");
+        fptr = fopen(path, "w");
         if (fptr == NULL){
             printf("Error!\n");
         } else {
