@@ -1,5 +1,3 @@
-![Logo](https://github.com/Bitha17/pics/blob/a8f1f8e0421dac89e84233695bed9b47df318157/20221103_162131%20(1)%20(1).jpg)
-
 # Brute Force 24 Game Solver in C
 > by Tabitha Permalla (13521111)
 
@@ -9,7 +7,7 @@ This project is created as an assignment of IF2211 Algorithm Strategies.
 * [General Information](#general-information)
 * [Structures](#structures)
 * [Setup and Usage](#setup-and-usage)
-* [Authors](#authors)
+* [Author](#author)
 
 ## General Information
 This program is a 24 Game Solver written in C using Brute-Force Algorithm. The program returns possible equations for a set of 4 cards which equal to 24. Users may choose to input their own cards or use the random generator. Users are also given the choice to save the result into a txt file.
