@@ -44,7 +44,7 @@ README.md
 ```
 
 ## Setup and Usage
-1. Clone this repository using command `git clone https://github.com/Bitha17/Brute-Force-24GameSolver-in-C.git`.
+1. Clone this repository using command `git clone https://github.com/Bitha17/Tucil1_13521111.git`.
 2. Open this repository in your device and change directory to bin (using cd bin).
 3. Run the program using the command './main'
 
